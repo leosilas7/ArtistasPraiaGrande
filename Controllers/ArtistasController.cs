@@ -23,7 +23,8 @@ namespace ArtistasPraiaGrande.Controllers
         public async Task<IActionResult> Index()
         {
             return View(await _context.Artistas.ToListAsync());
-            //teste
+            //return View(await _context.Artistas.FromSqlInterpolated("select * from Artistas").ToListAsync());
+
         }
 
         // GET: Artistas/Details/5
