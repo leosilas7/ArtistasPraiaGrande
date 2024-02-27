@@ -9,7 +9,7 @@ namespace ArtistasPraiaGrande.Data
 {
     public partial class ArtistasPraiaGrandeDbContext : DbContext
     {
-        public ArtistasPraiaGrandeDbContext()
+        public ArtistasPraiaGrandeDbContext() 
         {
         }
 
