@@ -22,7 +22,7 @@ namespace ArtistasPraiaGrande.Controllers
         // GET: Artistas
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Artistas.ToListAsync());
+            return View(await _context.Artistas.Where(a => a.Ativo == 1).ToListAsync());
             //return View(await _context.Artistas.FromSqlInterpolated("select * from Artistas").ToListAsync());
 
         }
@@ -43,7 +43,7 @@ namespace ArtistasPraiaGrande.Controllers
             }
 
             return View(artista);
-        } 
+        }
 
         // GET: Artistas/Create
         public IActionResult Create()
