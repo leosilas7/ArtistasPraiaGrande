@@ -9,7 +9,7 @@ namespace ArtistasPraiaGrande.Data
 {
     public partial class ArtistasPraiaGrandeDbContext : DbContext
     {
-        public ArtistasPraiaGrandeDbContext() 
+        public ArtistasPraiaGrandeDbContext()
         {
         }
 
@@ -48,6 +48,10 @@ namespace ArtistasPraiaGrande.Data
                     .HasColumnType("datetime")
                     .HasColumnName("created")
                     .HasDefaultValueSql("(getdate())");
+
+                entity.Property(e => e.Deferido)
+                    .HasColumnName("deferido")
+                    .HasDefaultValueSql("('0')");
 
                 entity.Property(e => e.Modified)
                     .HasColumnType("datetime")

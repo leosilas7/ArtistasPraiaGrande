@@ -14,5 +14,6 @@ namespace ArtistasPraiaGrande.Models
         public byte Ativo { get; set; }
         public DateTime Created { get; set; }
         public DateTime? Modified { get; set; }
+        public byte Deferido { get; set; }
     }
 }

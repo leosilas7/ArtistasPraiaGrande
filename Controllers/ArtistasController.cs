@@ -22,9 +22,7 @@ namespace ArtistasPraiaGrande.Controllers
         // GET: Artistas
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Artistas.Where(a => a.Ativo == 1).ToListAsync());
-            //return View(await _context.Artistas.FromSqlInterpolated("select * from Artistas").ToListAsync());
-
+            return View(await _context.Artistas.Where(d => d.Deferido == 1).ToListAsync());
         }
 
         // GET: Artistas/Details/5
@@ -56,7 +54,7 @@ namespace ArtistasPraiaGrande.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdArtista,NomeCompleto,NomeSocial,NomeArtistico,Ativo,Created,Modified")] Artista artista)
+        public async Task<IActionResult> Create([Bind("IdArtista,NomeCompleto,NomeSocial,NomeArtistico,Ativo,Created,Modified,Deferido")] Artista artista)
         {
             if (ModelState.IsValid)
             {
@@ -88,7 +86,7 @@ namespace ArtistasPraiaGrande.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdArtista,NomeCompleto,NomeSocial,NomeArtistico,Ativo,Created,Modified")] Artista artista)
+        public async Task<IActionResult> Edit(int id, [Bind("IdArtista,NomeCompleto,NomeSocial,NomeArtistico,Ativo,Created,Modified,Deferido")] Artista artista)
         {
             if (id != artista.IdArtista)
             {
