@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Core.Flash;
+
 using Microsoft.EntityFrameworkCore;
 using ArtistasPraiaGrande.Data;
 using ArtistasPraiaGrande.Models;
@@ -26,9 +26,9 @@ namespace ArtistasPraiaGrande.Controllers
         // GET: Artistas
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Artistas.Where(artistas =>artistas.Ativo == 1 && artistas.Deferido == 1).ToListAsync());
+            //return View(await _context.Artistas.Where(artistas => artistas.Ativo == 1 && artistas.Deferido == 1).ToListAsync());
 
-            //Where(p => p.ProjectId != ProjectId && p.Name == Name)
+            return View(await _context.Artistas.ToListAsync());
         }
 
         // GET: Artistas/Details/5
@@ -66,7 +66,7 @@ namespace ArtistasPraiaGrande.Controllers
             {
                 _context.Add(artista);
                 await _context.SaveChangesAsync();
-                
+                TempData["AlertMessage"] = "Cadastro Criado Com Sucesso. Aguarde O Deferimento...";
                 return RedirectToAction(nameof(Index));
             }
             
@@ -120,6 +120,7 @@ namespace ArtistasPraiaGrande.Controllers
                         throw;
                     }
                 }
+                TempData["AlertMessage"] = "Cadastro Alterado Com Sucesso. ";
                 return RedirectToAction(nameof(Index));
             }
             return View(artista);
@@ -154,6 +155,7 @@ namespace ArtistasPraiaGrande.Controllers
             _context.Artistas.Update(artista);
             artista.Ativo = 0;
             await _context.SaveChangesAsync();
+            TempData["AlertMessage"] = "Cadastro Deletado Com Sucesso. ";
             return RedirectToAction(nameof(Index));
 
 

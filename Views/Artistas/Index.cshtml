@@ -6,9 +6,23 @@
 
 <h1>Index</h1>
 
+<br />
+
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+
+@if (TempData["AlertMessage"] != null)
+{
+    <div class="alert alert-success">
+        <strong>Sucesso!</strong> @TempData["AlertMessage"]
+        <button type="button" class="close" data-dismiss="alert">
+            <span>&times;</span>
+            @*<span>x</span>*@
+        </button>
+    </div>
+}
+
 <table class="table">
     <thead>
         <tr>
@@ -37,35 +51,36 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.NomeCompleto)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NomeSocial)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NomeArtistico)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Ativo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Created)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Modified)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Deferido)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.IdArtista">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdArtista">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdArtista">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NomeCompleto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NomeSocial)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NomeArtistico)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ativo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Created)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Modified)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Deferido)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.IdArtista">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.IdArtista">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.IdArtista">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
