@@ -17,6 +17,7 @@ namespace ArtistasPraiaGrande.Controllers
         public ArtistasController(ArtistasPraiaGrandeDbContext context)
         {
             _context = context;
+            //teste
         }
 
         // GET: Artistas
@@ -87,6 +88,7 @@ namespace ArtistasPraiaGrande.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("IdArtista,NomeCompleto,NomeSocial,NomeArtistico,Ativo,Created,Modified,Deferido")] Artista artista)
+        
         {
             if (id != artista.IdArtista)
             {
@@ -140,10 +142,17 @@ namespace ArtistasPraiaGrande.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var artista = await _context.Artistas.FindAsync(id);
-            _context.Artistas.Remove(artista);
+            //_context.Artistas.Remove(artista);
+            //mudando para ativo -> 0
+            _context.Artistas.Update(artista);
+            artista.Ativo = 0;
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
+
+
         }
+
+
 
         private bool ArtistaExists(int id)
         {
