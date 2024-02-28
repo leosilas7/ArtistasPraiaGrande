@@ -43,7 +43,7 @@ namespace ArtistasPraiaGrande.Controllers
             }
 
             return View(artista);
-        }
+        } 
 
         // GET: Artistas/Create
         public IActionResult Create()
