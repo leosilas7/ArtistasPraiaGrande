@@ -23,7 +23,9 @@ namespace ArtistasPraiaGrande.Controllers
         // GET: Artistas
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Artistas.Where(d => d.Deferido == 1).ToListAsync());
+            return View(await _context.Artistas.Where(artistas =>artistas.Ativo == 1 && artistas.Deferido == 1).ToListAsync());
+
+            //Where(p => p.ProjectId != ProjectId && p.Name == Name)
         }
 
         // GET: Artistas/Details/5
@@ -142,7 +144,7 @@ namespace ArtistasPraiaGrande.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var artista = await _context.Artistas.FindAsync(id);
-            //_context.Artistas.Remove(artista);
+            //_context.Artistas.Remove(artista); 
             //mudando para ativo -> 0
             _context.Artistas.Update(artista);
             artista.Ativo = 0;
