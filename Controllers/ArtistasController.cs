@@ -4,20 +4,23 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Core.Flash;
 using Microsoft.EntityFrameworkCore;
 using ArtistasPraiaGrande.Data;
 using ArtistasPraiaGrande.Models;
 
 namespace ArtistasPraiaGrande.Controllers
 {
+
     public class ArtistasController : Controller
     {
+        
         private readonly ArtistasPraiaGrandeDbContext _context;
 
         public ArtistasController(ArtistasPraiaGrandeDbContext context)
         {
             _context = context;
-            //teste
+            
         }
 
         // GET: Artistas
@@ -63,8 +66,10 @@ namespace ArtistasPraiaGrande.Controllers
             {
                 _context.Add(artista);
                 await _context.SaveChangesAsync();
+                
                 return RedirectToAction(nameof(Index));
             }
+            
             return View(artista);
         }
 
