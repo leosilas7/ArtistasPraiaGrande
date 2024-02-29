@@ -149,3 +149,5 @@ X:\MVC\ArtistasPraiaGrande\ArtistasPraiaGrande\obj\Debug\net5.0\Razor\Views\Arti
 X:\MVC\ArtistasPraiaGrande\ArtistasPraiaGrande\obj\Debug\net5.0\Razor\Views\Artistas\Details.cshtml.g.cs
 X:\MVC\ArtistasPraiaGrande\ArtistasPraiaGrande\obj\Debug\net5.0\Razor\Views\Artistas\Edit.cshtml.g.cs
 X:\MVC\ArtistasPraiaGrande\ArtistasPraiaGrande\obj\Debug\net5.0\Razor\Views\Artistas\Index.cshtml.g.cs
+X:\MVC\ArtistasPraiaGrande\ArtistasPraiaGrande\obj\Debug\net5.0\Razor\Views\Artistas\Deferir.cshtml.g.cs
+X:\MVC\ArtistasPraiaGrande\ArtistasPraiaGrande\obj\Debug\net5.0\Razor\Views\Artistas\Indeferidos.cshtml.g.cs

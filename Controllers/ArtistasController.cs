@@ -26,17 +26,17 @@ namespace ArtistasPraiaGrande.Controllers
         // GET: Artistas
         public async Task<IActionResult> Index()
         {
-            //return View(await _context.Artistas.Where(artistas => artistas.Ativo == 1 && artistas.Deferido == 1).ToListAsync());
+            return View(await _context.Artistas.Where(artistas => artistas.Ativo == 1 && artistas.Deferido == 1).ToListAsync());
 
-            return View(await _context.Artistas.ToListAsync());
+            //return View(await _context.Artistas.ToListAsync());
         }
 		
 		        // GET: Indeferidos
         public async Task<IActionResult> Indeferidos()
         {
-            //return View(await _context.Artistas.Where(artistas => artistas.Ativo == 1 && artistas.Deferido == 1).ToListAsync());
+            return View(await _context.Artistas.Where(artistas => artistas.Ativo == 1 && artistas.Deferido == 0).ToListAsync());
 
-            return View(await _context.Artistas.ToListAsync());
+            //return View(await _context.Artistas.ToListAsync());
         }
 
         // GET: Artistas/Details/5
@@ -74,7 +74,7 @@ namespace ArtistasPraiaGrande.Controllers
             {
                 _context.Add(artista);
                 await _context.SaveChangesAsync();
-                TempData["AlertMessage"] = "Cadastro Criado Com Sucesso. Aguarde O Deferimento...";
+                TempData["AlertMessage"] = "Cadastro Criado Com Sucesso. Aguardar Aprovação Do Cadastro...";
                 return RedirectToAction(nameof(Index));
             }
             else
@@ -171,10 +171,41 @@ namespace ArtistasPraiaGrande.Controllers
             TempData["AlertMessage"] = "Cadastro Deletado Com Sucesso. ";
             return RedirectToAction(nameof(Index));
 
+        }
+		
+		// GET: Artistas/Deferir/5
+        public async Task<IActionResult> Deferir(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
 
+            var artista = await _context.Artistas
+                .FirstOrDefaultAsync(m => m.IdArtista == id);
+            if (artista == null)
+            {
+                return NotFound();
+            }
+
+            return View(artista);
         }
 
+        // POST: Artistas/ConfirmarDeferimento/5
+        [HttpPost, ActionName("Deferir")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ConfirmarDeferimento(int id)
+        {
+            var artista = await _context.Artistas.FindAsync(id);
+            //_context.Artistas.Remove(artista); 
+            //mudando para ativo -> 0
+            _context.Artistas.Update(artista);
+            artista.Deferido = 1;
+            await _context.SaveChangesAsync();
+            TempData["AlertMessage"] = "Cadastro Deferido Com Sucesso. ";
+            return RedirectToAction(nameof(Index));
 
+        }
 
         private bool ArtistaExists(int id)
         {
