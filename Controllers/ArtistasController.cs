@@ -289,7 +289,7 @@ namespace ArtistasPraiaGrande.Controllers
             //mudando para ativo -> 0
             
             _context.Artistas.Update(artista);
-            
+            artista.Deferido = 1;
             await _context.SaveChangesAsync();
             TempData["AlertMessage"] = "Cadastro Deferido Com Sucesso. ";
             return RedirectToAction(nameof(Index));
