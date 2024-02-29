@@ -178,14 +178,17 @@ namespace ArtistasPraiaGrande.Controllers
             if (id > 0)
             {
                 var artista = await _context.Artistas.FirstOrDefaultAsync(m => m.IdArtista == id);
-                
+                                
+
                 if (artista != null)
                 {
+
                     _context.Artistas.Update(artista);
                     artista.Ativo = 0;
                     await _context.SaveChangesAsync();
                 }
             }
+            TempData["AlertMessage"] = "Artista Delete2 Com Sucesso. ";
             return RedirectToAction(nameof(Index));
         }
 
