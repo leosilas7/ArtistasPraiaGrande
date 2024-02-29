@@ -30,6 +30,14 @@ namespace ArtistasPraiaGrande.Controllers
 
             return View(await _context.Artistas.ToListAsync());
         }
+		
+		        // GET: Indeferidos
+        public async Task<IActionResult> Indeferidos()
+        {
+            //return View(await _context.Artistas.Where(artistas => artistas.Ativo == 1 && artistas.Deferido == 1).ToListAsync());
+
+            return View(await _context.Artistas.ToListAsync());
+        }
 
         // GET: Artistas/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -69,6 +77,11 @@ namespace ArtistasPraiaGrande.Controllers
                 TempData["AlertMessage"] = "Cadastro Criado Com Sucesso. Aguarde O Deferimento...";
                 return RedirectToAction(nameof(Index));
             }
+            else
+            {
+                TempData["AlertMessage"] = "Deu erro...";
+                
+            }
             
             return View(artista);
         }
@@ -78,7 +91,7 @@ namespace ArtistasPraiaGrande.Controllers
         {
             if (id == null)
             {
-                return NotFound();
+                return NotFound();  
             }
 
             var artista = await _context.Artistas.FindAsync(id);
