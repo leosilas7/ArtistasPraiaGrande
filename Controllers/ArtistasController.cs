@@ -147,8 +147,7 @@ namespace ArtistasPraiaGrande.Controllers
                 return NotFound();
             }
 
-            var artista = await _context.Artistas
-                .FirstOrDefaultAsync(m => m.IdArtista == id);
+            var artista = await _context.Artistas.FirstOrDefaultAsync(m => m.IdArtista == id);
             if (artista == null)
             {
                 return NotFound();
@@ -171,9 +170,95 @@ namespace ArtistasPraiaGrande.Controllers
             TempData["AlertMessage"] = "Cadastro Deletado Com Sucesso. ";
             return RedirectToAction(nameof(Index));
 
+          }
+
+        //[POST]
+        public async Task<IActionResult> Delete2(int id)
+        {
+            if (id > 0)
+            {
+                var artista = await _context.Artistas.FirstOrDefaultAsync(m => m.IdArtista == id);
+                
+                if (artista != null)
+                {
+                    _context.Artistas.Update(artista);
+                    artista.Ativo = 0;
+                    await _context.SaveChangesAsync();
+                }
+            }
+            return RedirectToAction(nameof(Index));
         }
-		
-		// GET: Artistas/Deferir/5
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // GET: Artistas/Deferir/5
         public async Task<IActionResult> Deferir(int? id)
         {
             if (id == null)
@@ -199,8 +284,9 @@ namespace ArtistasPraiaGrande.Controllers
             var artista = await _context.Artistas.FindAsync(id);
             //_context.Artistas.Remove(artista); 
             //mudando para ativo -> 0
+            
             _context.Artistas.Update(artista);
-            artista.Deferido = 1;
+            
             await _context.SaveChangesAsync();
             TempData["AlertMessage"] = "Cadastro Deferido Com Sucesso. ";
             return RedirectToAction(nameof(Index));
