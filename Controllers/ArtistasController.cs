@@ -193,58 +193,25 @@ namespace ArtistasPraiaGrande.Controllers
         }
 
 
+        //[POST]
+        public async Task<IActionResult> Deferir2(int id)
+        {
+            if (id > 0)
+            {
+                var artista = await _context.Artistas.FirstOrDefaultAsync(m => m.IdArtista == id);
 
 
+                if (artista != null)
+                {
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                    _context.Artistas.Update(artista);
+                    artista.Ativo = 0;
+                    await _context.SaveChangesAsync();
+                }
+            }
+            TempData["AlertMessage"] = "Artista Deferir2 Com Sucesso. ";
+            return RedirectToAction(nameof(Index));
+        }
 
 
 
@@ -296,9 +263,12 @@ namespace ArtistasPraiaGrande.Controllers
 
         }
 
+
         private bool ArtistaExists(int id)
         {
             return _context.Artistas.Any(e => e.IdArtista == id);
         }
+
+
     }
 }
