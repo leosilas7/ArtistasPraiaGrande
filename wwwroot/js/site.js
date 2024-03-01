@@ -8,3 +8,4 @@ window.setTimeout(function () {
         $(this).remove();
     });
 }, 5000);
+ 
