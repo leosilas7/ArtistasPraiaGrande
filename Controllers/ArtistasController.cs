@@ -69,10 +69,12 @@ namespace ArtistasPraiaGrande.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("IdArtista,NomeCompleto,NomeSocial,NomeArtistico,Ativo,Created,Modified,Deferido")] Artista artista)
+        //public async Task<IActionResult> Create([Bind("IdArtista,NomeCompleto,NomeSocial,NomeArtistico,Created,Modified,Deferido")] Artista artista)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(artista);
+                artista.Ativo = 1;
                 await _context.SaveChangesAsync();
                 TempData["AlertMessage"] = "Cadastro Criado Com Sucesso. Aguardar Aprovação Do Cadastro...";
                 return RedirectToAction(nameof(Index));
