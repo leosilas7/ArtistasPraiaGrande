@@ -142,40 +142,40 @@ namespace ArtistasPraiaGrande.Controllers
         }
 
         // GET: Artistas/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
+        //public async Task<IActionResult> Delete(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            var artista = await _context.Artistas.FirstOrDefaultAsync(m => m.IdArtista == id);
-            if (artista == null)
-            {
-                return NotFound();
-            }
+        //    var artista = await _context.Artistas.FirstOrDefaultAsync(m => m.IdArtista == id);
+        //    if (artista == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            return View(artista);
-        }
+        //    return View(artista);
+        //}
 
         // POST: Artistas/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var artista = await _context.Artistas.FindAsync(id);
-            //_context.Artistas.Remove(artista); 
-            //mudando para ativo -> 0
-            _context.Artistas.Update(artista);
-            artista.Ativo = 0;
-            await _context.SaveChangesAsync();
-            TempData["AlertMessage"] = "Cadastro Deletado Com Sucesso. ";
-            return RedirectToAction(nameof(Index));
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> DeleteConfirmed(int id)
+        //{
+        //    var artista = await _context.Artistas.FindAsync(id);
+        //    //_context.Artistas.Remove(artista); 
+        //    //mudando para ativo -> 0
+        //    _context.Artistas.Update(artista);
+        //    artista.Ativo = 0;
+        //    await _context.SaveChangesAsync();
+        //    TempData["AlertMessage"] = "Cadastro Deletado Com Sucesso. ";
+        //    return RedirectToAction(nameof(Index));
 
-          }
+        //  }
 
         //[POST]
-        public async Task<IActionResult> Delete2(int id)
+        public async Task<IActionResult> Delete(int id)
         {
             if (id > 0)
             {
@@ -190,13 +190,13 @@ namespace ArtistasPraiaGrande.Controllers
                     await _context.SaveChangesAsync();
                 }
             }
-            TempData["AlertMessage"] = "Artista Delete2 Com Sucesso. ";
+            TempData["AlertMessage"] = "Artista Deletado Com Sucesso. ";
             return RedirectToAction(nameof(Index));
         }
 
 
         //[POST]
-        public async Task<IActionResult> Deferir2(int id)
+        public async Task<IActionResult> Deferir(int id)
         {
             if (id > 0)
             {
@@ -211,59 +211,45 @@ namespace ArtistasPraiaGrande.Controllers
                     await _context.SaveChangesAsync();
                 }
             }
-            TempData["AlertMessage"] = "Artista Deferir2 Com Sucesso. ";
+            TempData["AlertMessage"] = "Artista Deferido Com Sucesso. ";
             return RedirectToAction(nameof(Index));
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
         // GET: Artistas/Deferir/5
-        public async Task<IActionResult> Deferir(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
+        //public async Task<IActionResult> Deferir(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            var artista = await _context.Artistas
-                .FirstOrDefaultAsync(m => m.IdArtista == id);
-            if (artista == null)
-            {
-                return NotFound();
-            }
+        //    var artista = await _context.Artistas
+        //        .FirstOrDefaultAsync(m => m.IdArtista == id);
+        //    if (artista == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            return View(artista);
-        }
+        //    return View(artista);
+        //}
 
         // POST: Artistas/ConfirmarDeferimento/5
-        [HttpPost, ActionName("Deferir")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> ConfirmarDeferimento(int id)
-        {
-            var artista = await _context.Artistas.FindAsync(id);
-            //_context.Artistas.Remove(artista); 
-            //mudando para ativo -> 0
+        //[HttpPost, ActionName("Deferir")]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> ConfirmarDeferimento(int id)
+        //{
+        //    var artista = await _context.Artistas.FindAsync(id);
+        //    //_context.Artistas.Remove(artista); 
+        //    //mudando para ativo -> 0
             
-            _context.Artistas.Update(artista);
-            artista.Deferido = 1;
-            await _context.SaveChangesAsync();
-            TempData["AlertMessage"] = "Cadastro Deferido Com Sucesso. ";
-            return RedirectToAction(nameof(Index));
+        //    _context.Artistas.Update(artista);
+        //    artista.Deferido = 1;
+        //    await _context.SaveChangesAsync();
+        //    TempData["AlertMessage"] = "Cadastro Deferido Com Sucesso. ";
+        //    return RedirectToAction(nameof(Index));
 
-        }
+        //}
 
 
         private bool ArtistaExists(int id)

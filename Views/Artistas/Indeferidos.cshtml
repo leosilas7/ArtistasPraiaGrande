@@ -4,7 +4,7 @@
     ViewData["Title"] = "Indeferidos";
 }
 
-<h1>Indeferidos</h1>
+<h1>Aguardando Deferimentos</h1>
 
 <br />
 
@@ -27,26 +27,29 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.NomeCompleto)
+                @*Html.DisplayNameFor(model => model.NomeCompleto)>*@
+                Nome Completo
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.NomeSocial)
+                @*Html.DisplayNameFor(model => model.NomeSocial)*@
+                Nome Social
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.NomeArtistico)
+                @*Html.DisplayNameFor(model => model.NomeArtistico)*@
+                Nome Artístico
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Ativo)
-            </th>
-            <th>
+            @*<th>
+                Html.DisplayNameFor(model => model.Ativo)
+                </th>*@
+            @*<th>
                 @Html.DisplayNameFor(model => model.Created)
-            </th>
-            <th>
+                </th>*@
+            @*<th>
                 @Html.DisplayNameFor(model => model.Modified)
-            </th>
-            <th>
+                </th>*@
+            @* <th>
                 @Html.DisplayNameFor(model => model.Deferido)
-            </th>
+                </th>*@
             <th></th>
         </tr>
     </thead>
@@ -63,27 +66,27 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.NomeArtistico)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Ativo)
-                </td>
-                <td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.Ativo)
+                    </td>*@
+                @*<td>
                     @Html.DisplayFor(modelItem => item.Created)
-                </td>
-                <td>
+                    </td>*@
+                @*<td>
                     @Html.DisplayFor(modelItem => item.Modified)
-                </td>
-                <td>
+                    </td>*@
+                @*<td>
                     @Html.DisplayFor(modelItem => item.Deferido)
-                </td>
+                    </td>*@
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.IdArtista">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.IdArtista">Details</a> |
+                    <a asp-action="Edit" asp-route-id="@item.IdArtista">Editar</a> |
+                    <a asp-action="Details" asp-route-id="@item.IdArtista">Detalhes</a> |
 
-                    <a asp-action="Delete" asp-route-id="@item.IdArtista">Delete</a> |
-                    <a asp-action="Delete2" asp-route-id="@item.IdArtista" new { onclick="return confirm('Are sure wants to Delete2?');" })>Delete2</a> |
+                    
+                    <a asp-action="Delete" asp-route-id="@item.IdArtista" new { onclick="return confirm('Tem certeza que deseja deletar?');" })>Deletar</a> |
 
-                    <a asp-action="Deferir" asp-route-id="@item.IdArtista">Deferir</a> |
-                    <a asp-action="Deferir2" asp-route-id="@item.IdArtista" new { onclick="return confirm('Are sure wants to Deferir2?');" })>Deferir2</a> |
+                    
+                    <a asp-action="Deferir" asp-route-id="@item.IdArtista" new { onclick="return confirm('Tem certeza que deseja deferir?');" })>Deferir</a> |
                 </td>
             </tr>
         }
