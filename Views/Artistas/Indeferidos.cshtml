@@ -78,15 +78,12 @@
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.IdArtista">Edit</a> |
                     <a asp-action="Details" asp-route-id="@item.IdArtista">Details</a> |
+
                     <a asp-action="Delete" asp-route-id="@item.IdArtista">Delete</a> |
-                    <a asp-action="Delete2" asp-route-id="@item.IdArtista" new { onclick = "return confirm('Are sure wants to delete?');" })>Delete2</a> |
-                    
+                    <a asp-action="Delete2" asp-route-id="@item.IdArtista" new { onclick="return confirm('Are sure wants to Delete2?');" })>Delete2</a> |
+
                     <a asp-action="Deferir" asp-route-id="@item.IdArtista">Deferir</a> |
-
-
-
-
-
+                    <a asp-action="Deferir2" asp-route-id="@item.IdArtista" new { onclick="return confirm('Are sure wants to Deferir2?');" })>Deferir2</a> |
                 </td>
             </tr>
         }
