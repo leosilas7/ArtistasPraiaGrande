@@ -205,7 +205,7 @@ namespace ArtistasPraiaGrande.Controllers
                 {
 
                     _context.Artistas.Update(artista);
-                    artista.Ativo = 0;
+                    artista.Deferido = 1;
                     await _context.SaveChangesAsync();
                 }
             }
