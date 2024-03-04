@@ -81,11 +81,9 @@
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.IdArtista">Editar</a> |
                     <a asp-action="Details" asp-route-id="@item.IdArtista">Detalhes</a> |
-
-                    
+                                        
                     <a asp-action="Delete" asp-route-id="@item.IdArtista" new { onclick="return confirm('Tem certeza que deseja deletar?');" })>Deletar</a> |
-
-                    
+                                        
                     <a asp-action="Deferir" asp-route-id="@item.IdArtista" new { onclick="return confirm('Tem certeza que deseja deferir?');" })>Deferir</a> |
                 </td>
             </tr>
